@@ -22,4 +22,6 @@ src
 
 Como se va a usar sass para este proyecto, debemos instalar siguientes las dependencias:
 
-- **`npm install node-sass react-helmet react-router-dom @mdi/font materialize-css classnames --save-dev`**
+- **`npm install node-sass --save-dev`**
+
+- **`npm install node-sass react-helmet react-router-dom @mdi/font materialize-css classnames --save`**
