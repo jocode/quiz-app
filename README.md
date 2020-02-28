@@ -25,3 +25,7 @@ Como se va a usar sass para este proyecto, debemos instalar siguientes las depen
 - **`npm install node-sass --save-dev`**
 
 - **`npm install node-sass react-helmet react-router-dom @mdi/font materialize-css classnames --save`**
+
+**react-helmet** Lo usamos para cambiar el nombre del título de la Págin
+
+Los **componentes de clase** tienen **_estado_**, los componentes funcionales no tienen, aunque se pueden utilizar los hooks para hacer las funcionalidades.
