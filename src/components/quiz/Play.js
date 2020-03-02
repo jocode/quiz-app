@@ -37,6 +37,9 @@ class Play extends React.Component {
     };
 
     this.interval = null;
+    this.correctSound = React.createRef();
+    this.wrongSound = React.createRef();
+    this.buttonSound = React.createRef();
   }
 
   componentDidMount() {
@@ -82,12 +85,12 @@ class Play extends React.Component {
 
     if (e.target.innerHTML.toLowerCase() === this.state.answer.toLowerCase()) {
       setTimeout(() => {
-        document.getElementById('correct-sound').play();
+        this.correctSound.current.play();
       }, 300);
       this.correctAnswer();
     } else {
       setTimeout(() => {
-        document.getElementById('wrong-sound').play();
+        this.wrongSound.current.play();
       }, 300)
       this.wrongAnswer();
     }
@@ -145,7 +148,7 @@ class Play extends React.Component {
   };
 
   playButtonSound = () => {
-    document.getElementById('button-sound').play();
+    this.buttonSound.current.play();
   };
 
   correctAnswer = () => {
@@ -362,9 +365,9 @@ class Play extends React.Component {
       hintsUsed: 5 - state.hints
     }
 
-    console.log(playerStats);
+    // console.log(playerStats);
     setTimeout(() => {
-      this.props.history.push('/');
+      this.props.history.push('/play/quizSummary', playerStats);
     }, 1000)
   }
 
@@ -384,9 +387,9 @@ class Play extends React.Component {
       <Fragment>
         <Helmet><title>Quiz Page</title></Helmet>
         <Fragment>
-          <audio id="correct-sound" src={correctNotification}></audio>
-          <audio id="wrong-sound" src={wrongNotification}></audio>
-          <audio id="button-sound" src={buttonSound}></audio>
+          <audio ref={this.correctSound} id="correct-sound" src={correctNotification}></audio>
+          <audio ref={this.wrongSound} src={wrongNotification}></audio>
+          <audio ref={this.buttonSound} src={buttonSound}></audio>
         </Fragment>
         <div className="question">
           <h2>Quiz Mode</h2>
